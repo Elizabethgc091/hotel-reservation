@@ -1,0 +1,62 @@
+.card-container {
+  width: 380px;
+  border: black solid;
+  border-radius: 8px;
+  font-family: "Comfortaa", cursive;
+  margin: 8px;
+}
+.main-margin {
+  margin: 20px;
+}
+.photo-hotel {
+  height: 240px;
+  width: 100%;
+  border-radius: 8px;
+}
+.info-hotel {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+.info-hotel > div {
+  margin: 5px;
+}
+.name-hotel {
+  font-size: 22px;
+}
+.room-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.is-room-available {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.is-room-available > img {
+  height: 32px;
+  margin-right: 8px;
+}
+
+.price-indecator {
+  display: flex;
+  justify-content: center;
+  background-color: #7850fa;
+  border-radius: 2px;
+  padding: 2px;
+}
+.price-indecator > div {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+.btn-booking {
+  width: 100%;
+  height: 32px;
+  background: rgb(37, 6, 80);
+  background: linear-gradient(89.79deg, #0037eb -45.04%, #7850fa 64.93%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
