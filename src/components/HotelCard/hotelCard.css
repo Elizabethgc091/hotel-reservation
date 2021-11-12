@@ -39,14 +39,14 @@
   margin-right: 8px;
 }
 
-.price-indecator {
+.price-indicator {
   display: flex;
   justify-content: center;
-  background-color: #7850fa;
+
   border-radius: 2px;
   padding: 2px;
 }
-.price-indecator > div {
+.price-indicator > div {
   color: white;
   font-weight: 700;
   font-size: 20px;
