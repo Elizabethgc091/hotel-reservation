@@ -1,7 +1,7 @@
 .card-container {
   width: 380px;
-  border: black solid;
-  border-radius: 8px;
+  border: 2px solid #207c9b;
+  border-radius: 12px;
   font-family: "Comfortaa", cursive;
   margin: 8px;
 }
@@ -12,6 +12,14 @@
   height: 240px;
   width: 100%;
   border-radius: 8px;
+}
+.location-container {
+  display: flex;
+  align-items: center;
+}
+.location-container > img {
+  height: 22px;
+  margin-right: 8px;
 }
 .info-hotel {
   display: flex;
@@ -35,7 +43,7 @@
   align-items: center;
 }
 .is-room-available > img {
-  height: 32px;
+  height: 28px;
   margin-right: 8px;
 }
 
@@ -51,12 +59,27 @@
   font-weight: 700;
   font-size: 20px;
 }
+.icon-price {
+  height: 18px;
+}
 .btn-booking {
   width: 100%;
-  height: 32px;
+  height: 36px;
   background: rgb(37, 6, 80);
-  background: linear-gradient(89.79deg, #0037eb -45.04%, #7850fa 64.93%);
-  color: white;
+  background-color: #44b8b8;
+  font-size: 18px;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
+  flex: 2;
+}
+.date-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2498be;
+  color: #ffffff;
+  font-weight: bolder;
+  border-radius: 3px;
+  padding: 4px;
 }
