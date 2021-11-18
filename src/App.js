@@ -9,7 +9,7 @@ import Select from "./components/Select/Select.js";
 
 function App() {
   const [price, setPrice] = useState(0);
-  const [country, setCountry] = useState("Chile");
+  const [country, setCountry] = useState("Todos");
   const [roomSize, setRoomSize] = useState(0);
   const [filteredHotelsList, setFilteredHotelsList] = useState(hotelsData);
 
@@ -17,7 +17,7 @@ function App() {
     setFilteredHotelsList(filterByAllFilters());
   }, [price, country, roomSize]);
 
-  function selectFiltered(selectedValue) {
+  function selectFilteredPrice(selectedValue) {
     setPrice(selectedValue);
   }
 
@@ -44,11 +44,53 @@ function App() {
     return result;
   }
 
+  let priceOptions = [
+    {
+      name: "Todos",
+      value: 0,
+    },
+    { name: "$", value: 1 },
+    { name: "$$", value: 2 },
+    { name: "$$$", value: 3 },
+    { name: "$$$$", value: 4 },
+  ];
+  let countryOptions = [
+    {
+      name: "Todos",
+      value: "Todos",
+    },
+    {
+      name: "Argentina",
+      value: "Argentina",
+    },
+    {
+      name: "Chile",
+      value: "Chile",
+    },
+    {
+      name: "Brasil",
+      value: "Brasil",
+    },
+    {
+      name: "Uruguay",
+      value: "Uruguay",
+    },
+  ];
+
   return (
     <div>
       <div className="App">
         <Header price={price} />
-        <Select price={price} selectFilter={selectFiltered} />
+        <Select
+          options={priceOptions}
+          value={price}
+          selectFilter={selectFilteredPrice}
+        />
+        <Select
+          options={countryOptions}
+          value={country}
+          selectFilter={selectFilteredCountry}
+        />
         <div className="hotels-contaniner">
           {filteredHotelsList.map((hotel, index) => {
             return (

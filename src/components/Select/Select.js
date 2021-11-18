@@ -1,21 +1,22 @@
 import React from "react";
-import { hotelsData } from "../../data.js";
 
-function Select({ price, selectFilter }) {
+function Select({ options, value, selectFilter }) {
+  let optionsHtml = [];
+  for (let index = 0; index < options.length; index++) {
+    optionsHtml.push(
+      <option value={options[index].value}>{options[index].name}</option>
+    );
+  }
+  console.log(optionsHtml);
   return (
-    <div>
-      {/* filtro precio */}
+    <div className="select-container">
       <select
         onChange={(event) => {
           selectFilter(event.target.value);
         }}
-        value={price}
+        value={value}
       >
-        <option value={0}>Todos</option>
-        <option value={1}>$</option>
-        <option value={2}>$$</option>
-        <option value={3}>$$$</option>
-        <option value={4}>$$$$</option>
+        {optionsHtml}
       </select>
     </div>
   );
