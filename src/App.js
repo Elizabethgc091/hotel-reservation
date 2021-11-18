@@ -19,11 +19,7 @@ function App() {
     <div>
       <div className="App">
         <Header />
-        <Select
-          price={price}
-          selectFilter={selectFiltered}
-          selectFilter={selectFiltered}
-        />
+        <Select price={price} selectFilter={selectFiltered} />
         <div className="hotels-contaniner">
           {filteredHotelsList.map((hotel, index) => {
             return (
