@@ -7,9 +7,9 @@ function Select({ options, value, selectFilter }) {
       <option value={options[index].value}>{options[index].name}</option>
     );
   }
-  console.log(optionsHtml);
+
   return (
-    <div className="select-container">
+    <div>
       <select
         onChange={(event) => {
           selectFilter(event.target.value);

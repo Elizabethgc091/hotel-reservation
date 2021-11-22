@@ -3,19 +3,20 @@ import React, { useState, useEffect } from "react";
 import HotelCard from "./components/HotelCard/HotelCard.js";
 import { hotelsData } from "./data.js";
 import "./components/HotelCard/hotelCard.css";
-import PriceRange from "./components/PriceRange/PriceRange";
 import Header from "./components/Header/Header.js";
 import Select from "./components/Select/Select.js";
+import InputDate from "./components/InputDate/InputDate.js";
 
 function App() {
+  const [dateFrom, setDateFrom] = useState("");
   const [price, setPrice] = useState(0);
   const [country, setCountry] = useState("Todos");
-  const [roomSize, setRoomSize] = useState(0);
+  const [roomSize, setRoomSize] = useState("Todos");
   const [filteredHotelsList, setFilteredHotelsList] = useState(hotelsData);
 
   useEffect(() => {
     setFilteredHotelsList(filterByAllFilters());
-  }, [price, country, roomSize]);
+  }, [dateFrom, price, country, roomSize]);
 
   function selectFilteredPrice(selectedValue) {
     setPrice(selectedValue);
@@ -25,9 +26,26 @@ function App() {
     setCountry(selectedValue);
   }
 
+  function selectFilteredSizeRoom(selectedValue) {
+    setRoomSize(selectedValue);
+  }
+
+  function calulateRoomSize(size) {
+    if (size == 0) {
+      return "Todos";
+    } else if (size > 0 && size <= 10) {
+      return "pequeño";
+    } else if (size >= 11 && size <= 25) {
+      return "mediano";
+    } else {
+      return "grande";
+    }
+  }
+
   function filterByAllFilters() {
     console.log("Filtered by price " + price);
     console.log("Filtered by country " + country);
+    console.log("Filtered by dateFrom" + dateFrom);
     let result = hotelsData
       .filter((hotel) => {
         return country === "Todos" ? hotel : hotel.country === country;
@@ -36,24 +54,20 @@ function App() {
         return price == 0 ? hotel : hotel.price == price;
       })
       .filter((hotel) => {
-        // TODO: Filtrar por numero de habitaciones
-        return roomSize == 0 ? hotel : hotel.rooms == roomSize;
+        return roomSize == "Todos"
+          ? hotel
+          : calulateRoomSize(hotel.rooms) === roomSize;
       });
-
     console.log(result);
     return result;
   }
 
-  let priceOptions = [
-    {
-      name: "Todos",
-      value: 0,
-    },
-    { name: "$", value: 1 },
-    { name: "$$", value: 2 },
-    { name: "$$$", value: 3 },
-    { name: "$$$$", value: 4 },
-  ];
+  function reset() {
+    setCountry("Todos");
+    setPrice(0);
+    setRoomSize("Todos");
+  }
+
   let countryOptions = [
     {
       name: "Todos",
@@ -77,20 +91,66 @@ function App() {
     },
   ];
 
+  let priceOptions = [
+    {
+      name: "Todos",
+      value: 0,
+    },
+    { name: "$", value: 1 },
+    { name: "$$", value: 2 },
+    { name: "$$$", value: 3 },
+    { name: "$$$$", value: 4 },
+  ];
+
+  let roomSizeOptions = [
+    {
+      name: "Todos",
+      value: "Todos",
+    },
+    { name: "Pequeño", value: "pequeño" },
+    {
+      name: "Mediano",
+      value: "mediano",
+    },
+    {
+      name: "Grande",
+      value: "grande",
+    },
+  ];
+
   return (
     <div>
       <div className="App">
-        <Header price={price} />
-        <Select
-          options={priceOptions}
-          value={price}
-          selectFilter={selectFilteredPrice}
+        {/** Header */}
+        <Header
+          dateFrom={dateFrom}
+          price={price}
+          rooms={roomSize}
+          country={country}
         />
-        <Select
-          options={countryOptions}
-          value={country}
-          selectFilter={selectFilteredCountry}
-        />
+        <div className="filter-container">
+          <InputDate dateFrom={dateFrom} />
+          <InputDate />
+          <Select
+            options={countryOptions}
+            value={country}
+            selectFilter={selectFilteredCountry}
+          />
+          <Select
+            options={priceOptions}
+            value={price}
+            selectFilter={selectFilteredPrice}
+          />
+          {/** Filtered */}
+
+          <Select
+            options={roomSizeOptions}
+            value={roomSize}
+            selectFilter={selectFilteredSizeRoom}
+          />
+          <button onClick={reset}>Reset</button>
+        </div>
+
         <div className="hotels-contaniner">
           {filteredHotelsList.map((hotel, index) => {
             return (
@@ -108,6 +168,7 @@ function App() {
           })}
         </div>
       </div>
+      <footer>Hola</footer>
     </div>
   );
 }

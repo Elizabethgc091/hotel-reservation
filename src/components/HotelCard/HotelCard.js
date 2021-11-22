@@ -1,7 +1,6 @@
 import React from "react";
 import bed from "./bed.svg";
 import ubication from "./ubication.svg";
-
 import "./hotelCard.css";
 import PriceRange from "./../PriceRange/PriceRange.js";
 
