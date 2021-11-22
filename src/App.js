@@ -9,6 +9,7 @@ import InputDate from "./components/InputDate/InputDate.js";
 
 function App() {
   const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
   const [price, setPrice] = useState(0);
   const [country, setCountry] = useState("Todos");
   const [roomSize, setRoomSize] = useState("Todos");
@@ -18,6 +19,13 @@ function App() {
     setFilteredHotelsList(filterByAllFilters());
   }, [dateFrom, price, country, roomSize]);
 
+  function selectDateFrom(selectedDate) {
+    setDateFrom(selectedDate);
+    console.log("TimeStamp" + new Date(selectedDate).getTime());
+  }
+  function selectedDateTo(selectedDate) {
+    setDateTo(selectedDate);
+  }
   function selectFilteredPrice(selectedValue) {
     setPrice(selectedValue);
   }
@@ -47,6 +55,11 @@ function App() {
     console.log("Filtered by country " + country);
     console.log("Filtered by dateFrom" + dateFrom);
     let result = hotelsData
+      .filter((hotel) => {
+        return dateFrom === ""
+          ? hotel
+          : new Date(dateFrom).getTime() >= hotel.availabilityFrom;
+      })
       .filter((hotel) => {
         return country === "Todos" ? hotel : hotel.country === country;
       })
@@ -124,13 +137,14 @@ function App() {
         {/** Header */}
         <Header
           dateFrom={dateFrom}
+          dateTo={dateTo}
           price={price}
           rooms={roomSize}
           country={country}
         />
         <div className="filter-container">
-          <InputDate dateFrom={dateFrom} />
-          <InputDate />
+          <InputDate date={dateFrom} setDate={selectDateFrom} />
+          <InputDate date={dateTo} setDate={selectedDateTo} />
           <Select
             options={countryOptions}
             value={country}

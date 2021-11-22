@@ -1,13 +1,13 @@
 import React from "react";
 import "./style.css";
 
-function Header({ dateFrom, country, price, rooms }) {
+function Header({ dateFrom, dateTo, country, price, rooms }) {
   return (
     <div className="header-container">
       <div className="name-header">Reserva de Hoteles</div>
       <div className="info-reserva">
-        <div>Desde: {dateFrom ? { dateFrom } : " "} </div>
-        <div>Hasta: </div>
+        <div>Desde: {dateFrom} </div>
+        <div>Hasta: {dateTo} </div>
         <div>
           Destino: {country === "Todos" ? "Todos los destinos" : country}
         </div>

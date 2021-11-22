@@ -1,12 +1,13 @@
 import React from "react";
 
-function InputDate({ dateFrom, setDateFrom }) {
-  const InputDateFrom = (event) => {
-    setDateFrom(event.target.value);
+function InputDate({ date, setDate }) {
+  const inputDateOnChange = (event) => {
+    console.log(event.target.value);
+    setDate(event.target.value);
   };
   return (
     <div>
-      <input value={dateFrom} type="date" onChange={InputDateFrom}></input>
+      <input value={date} type="date" onChange={inputDateOnChange}></input>
     </div>
   );
 }
