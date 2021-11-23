@@ -49,9 +49,6 @@ function App() {
   }
 
   function filterByAllFilters() {
-    console.log("Filtered by price " + price);
-    console.log("Filtered by country " + country);
-    console.log("Filtered by dateFrom" + dateFrom);
     let result = hotelsData
       .filter((hotel) => {
         if (dateFrom !== "" && dateTo !== "") {

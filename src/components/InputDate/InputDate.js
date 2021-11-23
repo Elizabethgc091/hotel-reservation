@@ -3,7 +3,6 @@ import "./style.css";
 
 function InputDate({ date, setDate }) {
   const inputDateOnChange = (event) => {
-    console.log(event.target.value);
     setDate(event.target.value);
   };
   return (
