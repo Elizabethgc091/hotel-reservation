@@ -1,11 +1,9 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import HotelCard from "./components/HotelCard/HotelCard";
 import { hotelsData } from "./data.js";
 import "./components/HotelCard/hotelCard.css";
 import Header from "./components/Header/Header.js";
-import Select from "./components/Select/Select.js";
-import InputDate from "./components/InputDate/InputDate.js";
+import Filters from "./components/Filters/Filters";
 import Hoteles from "./components/Hoteles/Hoteles";
 
 function App() {
@@ -150,28 +148,22 @@ function App() {
           rooms={roomSize}
           country={country}
         />
-        <div className="filter-container">
-          <InputDate date={dateFrom} setDate={selectDateFrom} />
-          <InputDate date={dateTo} setDate={selectedDateTo} />
-          <Select
-            options={countryOptions}
-            value={country}
-            selectFilter={selectFilteredCountry}
-          />
-          <Select
-            options={priceOptions}
-            value={price}
-            selectFilter={selectFilteredPrice}
-          />
-          {/** Filtered */}
-
-          <Select
-            options={roomSizeOptions}
-            value={roomSize}
-            selectFilter={selectFilteredSizeRoom}
-          />
-          <button onClick={reset}>Reset</button>
-        </div>
+        <Filters
+          dateFrom={dateFrom}
+          selectDateFrom={selectDateFrom}
+          dateTo={dateTo}
+          selectedDateTo={selectedDateTo}
+          countryOptions={countryOptions}
+          country={country}
+          selectFilteredCountry={selectFilteredCountry}
+          priceOptions={priceOptions}
+          price={price}
+          selectFilteredPrice={selectFilteredPrice}
+          roomSizeOptions={roomSizeOptions}
+          roomSize={roomSize}
+          selectFilteredSizeRoom={selectFilteredSizeRoom}
+          reset={reset}
+        />
 
         <Hoteles hotelsList={filteredHotelsList} />
       </div>
