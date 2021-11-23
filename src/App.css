@@ -1,6 +1,7 @@
 .hotels-contaniner {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .filter-container {
   background-color: #282c34;

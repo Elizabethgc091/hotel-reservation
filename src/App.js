@@ -1,11 +1,12 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import HotelCard from "./components/HotelCard/HotelCard.js";
+import HotelCard from "./components/HotelCard/HotelCard";
 import { hotelsData } from "./data.js";
 import "./components/HotelCard/hotelCard.css";
 import Header from "./components/Header/Header.js";
 import Select from "./components/Select/Select.js";
 import InputDate from "./components/InputDate/InputDate.js";
+import Hoteles from "./components/Hoteles/Hoteles";
 
 function App() {
   const [dateFrom, setDateFrom] = useState("");
@@ -172,23 +173,7 @@ function App() {
           <button onClick={reset}>Reset</button>
         </div>
 
-        <div className="hotels-contaniner">
-          {filteredHotelsList.map((hotel, index) => {
-            return (
-              <HotelCard
-                photo={hotel.photo}
-                name={hotel.name}
-                description={hotel.description}
-                availabilityFrom={hotel.availabilityFrom}
-                availabilityTo={hotel.availabilityTo}
-                city={hotel.city}
-                rooms={hotel.rooms}
-                price={hotel.price}
-                key={index}
-              />
-            );
-          })}
-        </div>
+        <Hoteles hotelsList={filteredHotelsList} />
       </div>
       <footer>Hola</footer>
     </div>
