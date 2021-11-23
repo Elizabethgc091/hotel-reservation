@@ -2,22 +2,31 @@ import React from "react";
 import "./style.css";
 
 function Header({ dateFrom, dateTo, country, price, rooms }) {
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
   return (
     <div className="header-container">
       <div className="name-header margin-name">Reserva de Hoteles</div>
       <div className="info-reserva">
-        <div>Desde: {dateFrom} </div>
-        <div>Hasta: {dateTo} </div>
         <div>
-          Destino: {country === "Todos" ? "Todos los destinos" : country}
+          Desde:{" "}
+          {dateFrom === ""
+            ? " "
+            : new Date(dateFrom).toLocaleDateString("es-MX", options)}
         </div>
         <div>
-          Precio: {price == 0 ? "Todos los precios" : "$".repeat(price)}
+          Hasta:{" "}
+          {dateTo === ""
+            ? ""
+            : new Date(dateTo).toLocaleDateString("es-MX", options)}
         </div>
-        <div>
-          Tamaño:{" "}
-          {rooms === "Todos" ? "Todos los tamaños" : rooms.toUpperCase()}
-        </div>
+        <div>Destino: {country === "Todos" ? "" : country}</div>
+        <div>Precio: {price == 0 ? "" : "$".repeat(price)}</div>
+        <div>Tamaño: {rooms === "Todos" ? "" : rooms.toUpperCase()}</div>
       </div>
     </div>
   );
