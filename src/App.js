@@ -55,15 +55,16 @@ function App() {
     console.log("Filtered by dateFrom" + dateFrom);
     let result = hotelsData
       .filter((hotel) => {
-        return dateFrom === ""
-          ? hotel
-          : new Date(dateFrom).getTime() + 100000 >= hotel.availabilityFrom;
+        if (dateFrom !== "" && dateTo !== "") {
+          return (
+            hotel.availabilityFrom <= new Date(dateFrom).getTime() + 100000 &&
+            new Date(dateTo).getTime() <= hotel.availabilityTo
+          );
+        } else {
+          return hotel;
+        }
       })
-      .filter((hotel) => {
-        return dateTo === ""
-          ? hotel
-          : new Date(dateTo).getTime() <= hotel.availabilityTo;
-      })
+
       .filter((hotel) => {
         return country === "Todos" ? hotel : hotel.country === country;
       })
@@ -137,6 +138,11 @@ function App() {
     },
   ];
 
+  if (new Date(dateTo).getTime() < new Date(dateFrom).getTime()) {
+    alert("El rango de fechas es incorrecto");
+    reset();
+  }
+
   return (
     <div>
       <div className="App">
@@ -167,7 +173,9 @@ function App() {
 
         <Hoteles hotelsList={filteredHotelsList} />
       </div>
-      <footer>Hola</footer>
+      <footer>
+        <p>© 2021 Elizabeth Gonzalez Cruz | Reserva de Hoteles 1.0</p>
+      </footer>
     </div>
   );
 }
