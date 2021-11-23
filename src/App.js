@@ -75,7 +75,7 @@ function App() {
           ? hotel
           : calulateRoomSize(hotel.rooms) === roomSize;
       });
-    console.log(result);
+
     return result;
   }
 
