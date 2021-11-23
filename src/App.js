@@ -172,8 +172,8 @@ function App() {
 
         <Hoteles hotelsList={filteredHotelsList} />
       </div>
-      <footer>
-        <p>© 2021 Elizabeth Gonzalez Cruz | Reserva de Hoteles 1.0</p>
+      <footer className="footer-container">
+        <h3>© 2021 Elizabeth Gonzalez Cruz | Reserva de Hoteles</h3>
       </footer>
     </div>
   );

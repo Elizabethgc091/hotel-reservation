@@ -3,6 +3,13 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.footer-container {
+  display: flex;
+  justify-content: center;
+  background-color: #282c34;
+  color: aliceblue;
+  padding: 8px;
+}
 
 .App-logo {
   height: 40vmin;
