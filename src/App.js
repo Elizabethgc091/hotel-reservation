@@ -39,11 +39,11 @@ function App() {
   }
 
   function calulateRoomSize(size) {
-    if (size == 0) {
+    if (size === 0) {
       return "Todos";
     } else if (size > 0 && size <= 10) {
       return "pequeño";
-    } else if (size >= 11 && size <= 25) {
+    } else if (size >= 11 && size <= 20) {
       return "mediano";
     } else {
       return "grande";
@@ -69,10 +69,10 @@ function App() {
         return country === "Todos" ? hotel : hotel.country === country;
       })
       .filter((hotel) => {
-        return price == 0 ? hotel : hotel.price == price;
+        return price === 0 ? hotel : hotel.price == price;
       })
       .filter((hotel) => {
-        return roomSize == "Todos"
+        return roomSize === "Todos"
           ? hotel
           : calulateRoomSize(hotel.rooms) === roomSize;
       });
@@ -81,6 +81,8 @@ function App() {
   }
 
   function reset() {
+    setDateFrom("");
+    setDateTo("");
     setCountry("Todos");
     setPrice(0);
     setRoomSize("Todos");
@@ -177,6 +179,7 @@ function App() {
                 photo={hotel.photo}
                 name={hotel.name}
                 description={hotel.description}
+                availabilityFrom={hotel.availabilityFrom}
                 availabilityTo={hotel.availabilityTo}
                 city={hotel.city}
                 rooms={hotel.rooms}

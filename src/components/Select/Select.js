@@ -4,7 +4,9 @@ function Select({ options, value, selectFilter }) {
   let optionsHtml = [];
   for (let index = 0; index < options.length; index++) {
     optionsHtml.push(
-      <option value={options[index].value}>{options[index].name}</option>
+      <option key={index} value={options[index].value}>
+        {options[index].name}
+      </option>
     );
   }
 

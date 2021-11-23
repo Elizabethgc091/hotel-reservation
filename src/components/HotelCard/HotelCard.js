@@ -4,11 +4,22 @@ import ubication from "./ubication.svg";
 import "./hotelCard.css";
 import PriceRange from "./../PriceRange/PriceRange.js";
 
-function dateToString(dateInUnixFormat) {
-  return "Miercoles 22 de Enero de 1967";
-}
-
 function HotelCard(props) {
+  const options = {
+    weekday: "short",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  let dateFrom = new Date(props.availabilityFrom).toLocaleDateString(
+    "es-MX",
+    options
+  );
+  let dateTo = new Date(props.availabilityTo).toLocaleDateString(
+    "es-MX",
+    options
+  );
+
   return (
     <div className="card-container">
       <div className="main-margin">
@@ -20,12 +31,8 @@ function HotelCard(props) {
           </div>
           <div className="name-hotel">{props.name}</div>
           <div className="description">{props.description}</div>
-          <div className="date-style">
-            Desde: {dateToString(props.availabilityTo)}
-          </div>
-          <div className="date-style">
-            Hasta: {dateToString(props.availabilityTo)}
-          </div>
+          <div className="date-style">Desde: {dateFrom}</div>
+          <div className="date-style">Hasta: {dateTo}</div>
           <div className="room-info">
             <div className="is-room-available">
               <img src={bed} alt="icono" />
@@ -34,7 +41,14 @@ function HotelCard(props) {
             <PriceRange price={props.price} />
           </div>
         </div>
-        <button className="btn-booking">Reservar</button>
+        <button
+          className="btn-booking"
+          onClick={() => {
+            alert(("Hotel " + props.name + " Reservado 👍🏼").toUpperCase());
+          }}
+        >
+          Reservar
+        </button>
       </div>
     </div>
   );
