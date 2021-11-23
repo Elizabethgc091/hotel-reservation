@@ -7,7 +7,11 @@ function InputDate({ date, setDate }) {
   };
   return (
     <div>
-      <input value={date} type="date" onChange={inputDateOnChange}></input>
+      <input
+        value={date}
+        type="datetime-local"
+        onChange={inputDateOnChange}
+      ></input>
     </div>
   );
 }

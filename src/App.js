@@ -17,11 +17,11 @@ function App() {
 
   useEffect(() => {
     setFilteredHotelsList(filterByAllFilters());
-  }, [dateFrom, price, country, roomSize]);
+  }, [dateFrom, dateTo, price, country, roomSize]);
 
   function selectDateFrom(selectedDate) {
     setDateFrom(selectedDate);
-    console.log("TimeStamp" + new Date(selectedDate).getTime());
+    console.log("TimeStamp" + new Date(selectedDate).getTime() + 100000);
   }
   function selectedDateTo(selectedDate) {
     setDateTo(selectedDate);
@@ -58,7 +58,12 @@ function App() {
       .filter((hotel) => {
         return dateFrom === ""
           ? hotel
-          : new Date(dateFrom).getTime() >= hotel.availabilityFrom;
+          : new Date(dateFrom).getTime() + 100000 >= hotel.availabilityFrom;
+      })
+      .filter((hotel) => {
+        return dateTo === ""
+          ? hotel
+          : new Date(dateTo).getTime() <= hotel.availabilityTo;
       })
       .filter((hotel) => {
         return country === "Todos" ? hotel : hotel.country === country;
