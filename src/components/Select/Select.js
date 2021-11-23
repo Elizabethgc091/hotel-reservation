@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 function Select({ options, value, selectFilter }) {
   let optionsHtml = [];
@@ -11,7 +12,7 @@ function Select({ options, value, selectFilter }) {
   }
 
   return (
-    <div>
+    <div className="select">
       <select
         onChange={(event) => {
           selectFilter(event.target.value);

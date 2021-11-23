@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 function InputDate({ date, setDate }) {
   const inputDateOnChange = (event) => {
@@ -6,7 +7,7 @@ function InputDate({ date, setDate }) {
     setDate(event.target.value);
   };
   return (
-    <div>
+    <div className="input-container">
       <input
         value={date}
         type="datetime-local"

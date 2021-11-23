@@ -1,0 +1,31 @@
+.filter-container {
+  background-color: #282c34;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.date {
+  display: flex;
+}
+
+.select {
+  display: flex;
+}
+.btn-coniatner {
+  display: flex;
+  align-items: center;
+  background-color: #ededed;
+  border-radius: 13px;
+  border: 2px solid #dcdcdc;
+  cursor: pointer;
+  color: #777777;
+  font-size: 14px;
+  color: black;
+  margin: 18px;
+  text-shadow: 0px 1px 0px #ffffff;
+}
+.clean {
+  height: 38px;
+}

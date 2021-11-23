@@ -6,9 +6,11 @@
   width: 100%;
   height: 200px;
 }
+.margin-name {
+  margin: 38px;
+}
 
 .name-header {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;

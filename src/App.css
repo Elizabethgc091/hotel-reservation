@@ -3,12 +3,6 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-.filter-container {
-  background-color: #282c34;
-  display: flex;
-  justify-content: space-around;
-  padding: 18px;
-}
 
 .App-logo {
   height: 40vmin;

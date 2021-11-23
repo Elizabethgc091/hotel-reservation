@@ -20,7 +20,6 @@ function App() {
 
   function selectDateFrom(selectedDate) {
     setDateFrom(selectedDate);
-    console.log("TimeStamp" + new Date(selectedDate).getTime() + 100000);
   }
   function selectedDateTo(selectedDate) {
     setDateTo(selectedDate);
