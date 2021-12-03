@@ -60,12 +60,12 @@ function App() {
           return hotel;
         }
       })
-
       .filter((hotel) => {
         return country === "Todos" ? hotel : hotel.country === country;
       })
+
       .filter((hotel) => {
-        return price === 0 ? hotel : hotel.price == price;
+        return price == 0 ? hotel : hotel.price == price;
       })
       .filter((hotel) => {
         return roomSize === "Todos"
