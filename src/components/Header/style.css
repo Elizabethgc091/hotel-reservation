@@ -1,6 +1,6 @@
 .header-container {
   display: flex;
-  background-image: url(image.jpg);
+  background-image: url(./image.jpg);
   background-position: 100% 60%;
   background-size: cover;
   width: 100%;
