@@ -51,13 +51,13 @@ function App() {
   function filterByAllFilters() {
     let result = hotelsData
       .filter((hotel) => {
-        if (dateFrom !== "" && dateTo !== "") {
-          return (
-            hotel.availabilityFrom <= new Date(dateFrom).getTime() + 100000 &&
-            new Date(dateTo).getTime() <= hotel.availabilityTo
-          );
-        } else {
+        if (dateFrom === "" || dateTo === "") {
           return hotel;
+        } else {
+          return (
+            hotel.availabilityFrom > new Date(dateFrom).getTime() + 100000 &&
+            new Date(dateTo).getTime() < hotel.availabilityTo
+          );
         }
       })
       .filter((hotel) => {
